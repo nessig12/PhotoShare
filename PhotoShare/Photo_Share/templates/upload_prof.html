@@ -1,0 +1,16 @@
+<head>
+<title>Upload a photo!</title>
+</head>
+<body>
+    <div class="title">
+        <h1>Upload a Profile Picture</h1>
+    </div>
+        <form method="post" enctype="multipart/form-data" action="/upload_prof">
+            <label for="photo">Select photo:</label>
+            <input type="file" name="photo" required='true' /><br />
+            <input type="submit" value="Upload" />
+        </form>
+
+    <a href="/">Home</a>
+    <p><a href='/profile'>Profile</a></p>
+</body>

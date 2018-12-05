@@ -1,0 +1,16 @@
+<!doctype html>
+
+{% if message %}
+  <h3>{{message}}!</h3>
+{% endif %}
+
+<ul>
+	<form method="post" action="/create_album">
+		<label for="album">Album name:</label>
+		<input type="text" name="album_name"><br>
+		<input type="submit" value="Create!" /><br>
+	</form>
+</ul>
+
+<a href='/'>Home</a>
+<p><a href='/profile'>Profile</a></p>

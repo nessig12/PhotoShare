@@ -1,0 +1,40 @@
+<!doctype html>
+
+
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+
+
+{% if friends %}
+<h2>Here's your friends</h2>
+<ul>
+    {% for friend in friends %}
+        <li>{{friend[0][0]}} {{friend[0][1]}}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if users_search %}
+<h2>Here's the users:</h2>
+<ul>
+    {% for user in users_search %}
+        	<li>name: {{user[0]}} {{user[1]}}, dob: {{user[2]}}, email: {{user[3]}} </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+<ul>
+	<form method="post" action="/friends">
+		<label for="search">Search for Friends!</label><br>
+		First name: <input type="search" name="fname"><br>
+		Last name:  <input type="search" name="lname"><br>
+	    <input type="submit" value="Search" />
+	</form>
+</ul>
+
+<a href='/add_friends'>Add a Friend by email!</a><br>
+<a href='/profile'>Profile</a><br>
+<a href='/'>Go home</a>
+
+</html> 

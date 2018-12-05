@@ -1,0 +1,52 @@
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+
+{% if album_title %}
+  <h4>{{album_title}}!</h4>
+{% endif %}
+<br>
+<a href='upload'> Upload a photo!</a>
+<p><a href='/profile'>Profile</a></p>
+<a href='/'>Go home</a>
+
+{% if photos %}
+<ul>
+    {% for photo in photos %}
+        <li><img src='data:image/png;base64, {{photo[0][0]}}' style="width:50%; height:50%"/>
+        <br>Caption: {{photo[0][2]}}
+        <br>Tags: 
+        	{% for i in photo[1] %}
+				<ul><li><form method="post" action="/tag_search">
+  				<input type="submit" name="common_tag" value="{{i[0]}}">
+  				</form> <form method="post" action="/my_tag_search">
+  				<input type="text" name="tag_name" value="{{i[0]}}" hidden="true">
+  				<input type="submit" name="my_tag_search" value="Search tag in my photos">
+  				</form></li></ul>
+        	{% endfor %}
+        <br>Album: {{photo[0][3]}}
+        <br>Comments:
+        	{% for comment in photo[2] %}
+        		<ul><li>{{comment[0]}} commented by: {{comment[1]}} {{comment[2]}}</li></ul> 
+        	{% endfor %}
+        <br>
+        <form method="post" action="/show_all_photos"> 
+			Add Comment: <input type="text" name="comment" >
+			<input type="text" name="picture_id" value="{{photo[0][1]}}" hidden="true">
+	    	<input type="submit" value="Add comment" />
+		</form>
+		<form method="post" action="/like_pic">
+			<input type="text" name="picture_id" value="{{photo[0][1]}}" hidden="true">
+			<input type="submit" value="Like!">
+		</form>
+		Likes: {{photo[3][0][0]}} by 
+		{% for i in photo[4] %}
+			{{i[0]}} {{i[1]}},
+		{% endfor %}
+		<form method="post" action="/show_all_photos"><br>
+		<input type="submit" name="photo_delete" value="Delete">
+		<input type="text" name="picture_id" value="{{photo[0][1]}}" hidden="true"></li><br></form>
+
+    {% endfor %}
+</ul>
+{% endif %}
