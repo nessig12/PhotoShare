@@ -7,7 +7,7 @@ gevent-socketio==0.3.6
 gevent-websocket==0.9.5
 greenlet==0.4.9
 itsdangerous==0.24
-Jinja2==2.7.3
+Jinja2==2.10.1
 MarkupSafe==0.23
 mysql-python==1.2.5
 requests==2.8.1
